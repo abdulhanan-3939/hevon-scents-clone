@@ -1,0 +1,44 @@
+/* ============================================================
+   HOME PAGE — HomeCTA section
+   ============================================================ */
+
+.home-cta {
+  padding-block: var(--space-3xl);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.home-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-cta__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-lg);
+  max-width: 600px;
+}
+
+.home-cta__eyebrow {
+  color: var(--grey-500);
+}
+
+.home-cta__title {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.home-cta__title em {
+  font-style: italic;
+  color: var(--grey-300);
+}
+
+.home-cta__actions {
+  margin-top: var(--space-sm);
+}

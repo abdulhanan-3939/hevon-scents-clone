@@ -1,0 +1,40 @@
+.qty-selector {
+  display: inline-flex;
+  align-items: center;
+  border: var(--border-thin);
+  width: fit-content;
+}
+
+.qty-selector__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--black);
+  transition: background-color var(--dur-fast), opacity var(--dur-fast);
+}
+
+.qty-selector__btn:hover:not(:disabled) {
+  background-color: var(--grey-100);
+}
+
+.qty-selector__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.qty-selector__value {
+  min-width: 44px;
+  text-align: center;
+  font-size: var(--text-base);
+  font-weight: 400;
+  border-left: var(--border-thin);
+  border-right: var(--border-thin);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

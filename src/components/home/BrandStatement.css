@@ -1,0 +1,35 @@
+.brand-statement {
+  padding-block: var(--space-3xl);
+  border-bottom: var(--border-thin);
+}
+
+.brand-statement__eyebrow {
+  margin-bottom: var(--space-lg);
+}
+
+.brand-statement__text {
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  max-width: 20ch;
+  margin-bottom: var(--space-lg);
+}
+
+.brand-statement__text em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--grey-700);
+}
+
+.brand-statement__body {
+  max-width: 52ch;
+  font-size: var(--text-lg);
+  color: var(--grey-700);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .brand-statement {
+    padding-block: var(--space-2xl);
+  }
+}

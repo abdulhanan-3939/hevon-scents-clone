@@ -1,0 +1,125 @@
+.notes-preview {
+  border-bottom: var(--border-thin);
+}
+
+.notes-preview__title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  margin-top: 1rem;
+  margin-bottom: var(--space-2xl);
+}
+
+/* Accord line */
+.accord-wrap {
+  position: relative;
+  margin-bottom: var(--space-xl);
+}
+
+.accord-line {
+  height: 1px;
+  background: var(--grey-300);
+  width: 0;
+  transition: width 1200ms var(--ease-luxury);
+}
+
+.accord-line--visible {
+  width: 100%;
+}
+
+.accord-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-sm);
+}
+
+/* Notes grid */
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--grey-300);
+}
+
+/* Notes card */
+.notes-card {
+  background: var(--white);
+  padding: var(--space-xl);
+}
+
+.notes-card--dark {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.notes-card__header {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: var(--border-thin);
+}
+
+.notes-card--dark .notes-card__header {
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+
+.notes-card__label {
+  color: var(--grey-500);
+  margin-bottom: 0.5rem;
+}
+
+.notes-card__name {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.notes-card__empty {
+  color: var(--grey-500);
+  font-size: var(--text-sm);
+  font-style: italic;
+}
+
+/* Note rows */
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.note-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.note-row__label {
+  color: var(--grey-500);
+}
+
+.note-row__values {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+/* Placeholder */
+.notes-preview__placeholder {
+  color: var(--grey-500);
+  font-style: italic;
+  font-size: var(--text-base);
+  max-width: 52ch;
+  line-height: 1.7;
+  padding: var(--space-xl) 0;
+  border-top: var(--border-thin);
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .notes-card {
+    padding: var(--space-lg);
+  }
+}

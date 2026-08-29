@@ -1,0 +1,104 @@
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.product-info__eyebrow {
+  margin-bottom: -0.5rem;
+}
+
+.product-info__name {
+  font-size: var(--text-product);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.0;
+}
+
+.product-info__meta {
+  font-size: var(--text-sm);
+  color: var(--grey-500);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.product-info__price {
+  font-size: var(--text-xl);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  color: var(--black);
+  letter-spacing: 0.04em;
+}
+
+.product-info__divider {
+  margin-block: var(--space-sm);
+}
+
+.product-info__description {
+  font-size: var(--text-base);
+  color: var(--grey-700);
+  line-height: 1.7;
+  max-width: 48ch;
+}
+
+/* Purchase row */
+.product-info__purchase {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.product-info__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.product-info__add-btn {
+  flex: 1;
+  min-width: 200px;
+}
+
+.product-info__unavailable {
+  font-size: var(--text-sm);
+  color: var(--grey-500);
+  font-style: italic;
+  padding: var(--space-md) 0;
+}
+
+/* Details / accordions */
+.product-info__details {
+  border-top: var(--border-thin);
+  padding-top: var(--space-md);
+}
+
+.product-info__details-summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-md);
+  user-select: none;
+}
+
+.product-info__details-summary::-webkit-details-marker { display: none; }
+
+.product-info__details-summary::after {
+  content: '+';
+  font-size: 1.25rem;
+  font-weight: 300;
+  transition: transform var(--dur-fast);
+}
+
+details[open] .product-info__details-summary::after {
+  transform: rotate(45deg);
+}
+
+.product-info__details-body,
+.product-info__ingredients-text {
+  font-size: var(--text-sm);
+  color: var(--grey-700);
+  line-height: 1.7;
+  padding-bottom: var(--space-md);
+}
