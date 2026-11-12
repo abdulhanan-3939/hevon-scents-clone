@@ -1,17 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="HEVON SCENTS — Luxury fragrance, bottled. Discover RAGE and SERA, two signature Eau de Parfum expressions crafted for those who appreciate exceptional scent without the exceptional price." />
-    <title>HEVON SCENTS — Luxury, Bottled.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="HEVON SCENTS — Luxury fragrance, bottled. Discover RAGE and SERA, two signature Eau de Parfum expressions crafted for those who appreciate exceptional scent without the exceptional price." />
+  <title>HEVON SCENTS — Luxury, Bottled.</title>
+
+  <!-- Google Fonts: Fraunces (serif) + Jost (sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Bootstrap 5 CSS (grid + utilities only — custom CSS always overrides) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Custom CSS — loaded AFTER Bootstrap so our styles take priority -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR START ================= -->
+  <header class="navbar" id="site-navbar" role="banner">
+    <div class="navbar__inner container">
+
+      <!-- Logo — white by default (hero is dark), switches to black on scroll -->
+      <a href="index.html" class="navbar__logo" aria-label="HEVON SCENTS — Home">
+        <img id="navbar-logo" src="images/logo/hevon-logo-white.png.png" alt="HEVON SCENTS" height="52"
+          class="navbar__logo-img" />
+      </a>
+
+      <!-- Desktop navigation links -->
+      <nav class="navbar__nav" aria-label="Primary navigation">
+        <a href="shop.html" class="navbar__link">Shop</a>
+        <a href="about.html" class="navbar__link">About</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+      </nav>
+
+      <!-- Action buttons: search, cart, mobile burger -->
+      <div class="navbar__actions">
+
+        <!-- Search button -->
+        <button class="navbar__icon-btn js-search-open" aria-label="Search fragrances">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+
+        <!-- Cart / Bag icon with item count badge -->
+        <a href="cart.html" class="navbar__icon-btn navbar__cart" aria-label="Shopping bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <!-- Cart count badge — hidden when cart is empty -->
+          <span class="navbar__cart-count" id="navbar-cart-count" style="display:none;" aria-hidden="true">0</span>
+        </a>
+
+        <!-- Mobile hamburger button -->
+        <button class="navbar__burger" id="burger-btn" aria-label="Open menu" aria-expanded="false"
+          aria-controls="mobile-menu">
+          <span class="navbar__burger-bar"></span>
+          <span class="navbar__burger-bar"></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+  <!-- ================= NAVBAR END ================= -->
+
+
+  <!-- ================= MOBILE MENU START ================= -->
+  <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu"
+    aria-hidden="true">
+    <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+      <a href="shop.html" class="mobile-menu__link">Shop</a>
+      <a href="about.html" class="mobile-menu__link">About</a>
+      <a href="contact.html" class="mobile-menu__link">Contact</a>
+      <a href="cart.html" class="mobile-menu__link">
+        Bag
+        <span class="mobile-menu__count" id="mobile-cart-count" style="display:none;">0</span>
+      </a>
+      <button class="mobile-menu__search-btn js-search-open">Search</button>
+    </nav>
+  </div>
+
+  <!-- Dark backdrop behind mobile menu -->
+  <div id="menu-backdrop" class="mobile-menu__backdrop" style="display:none;" aria-hidden="true"></div>
+  <!-- ================= MOBILE MENU END ================= -->
+
+
+  <!-- ================= SEARCH OVERLAY START ================= -->
+  <div id="search-overlay" class="search-overlay" role="dialog" aria-modal="true" aria-label="Search fragrances">
+    <!-- Backdrop — click to close -->
+    <div id="search-backdrop" class="search-overlay__backdrop" aria-hidden="true"></div>
+
+    <!-- Search panel -->
+    <div class="search-overlay__panel">
+      <div class="search-overlay__header">
+        <div class="search-overlay__input-wrap">
+          <label for="search-input" class="sr-only">Search fragrances</label>
+          <input id="search-input" type="search" class="search-overlay__input" placeholder="Search fragrances…"
+            autocomplete="off" />
+        </div>
+        <button class="search-overlay__close js-search-close" aria-label="Close search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="search-overlay__body">
+        <!-- Hint text shown when search box is empty -->
+        <p class="search-overlay__hint eyebrow" id="search-hint">Start typing to search</p>
+        <!-- Search results appear here dynamically -->
+        <ul class="search-results" id="search-results" role="list"></ul>
+      </div>
+    </div>
+  </div>
+  <!-- ================= SEARCH OVERLAY END ================= -->
+
+
+  <!-- ================= MAIN PAGE CONTENT START ================= -->
+  <main class="page-main">
+
+    <!-- ================= HERO SECTION START ================= -->
+    <section class="hero" id="hero-section" aria-label="HEVON SCENTS — Hero">
+
+      <!-- Dark background layer -->
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <div class="hero__content container">
+
+        <!-- Left column: text content -->
+        <div class="hero__text">
+          <p class="eyebrow hero__eyebrow">HEVON SCENTS</p>
+
+          <h1 class="hero__headline serif">
+            Luxury,<br />
+            <em>Bottled.</em>
+          </h1>
+
+          <p class="hero__sub">
+            Exceptional fragrance,<br />
+            without the exceptional price.
+          </p>
+
+          <div class="hero__ctas">
+            <a href="shop.html" class="btn btn--ghost btn--lg hero__cta-primary">
+              <span class="btn__inner">Explore the Collection</span>
+            </a>
+            <a href="about.html" class="hero__cta-secondary">
+              Discover HEVON
+            </a>
+          </div>
+        </div>
+
+        <!-- Right column: product bottles -->
+        <div class="hero__bottles" aria-hidden="true">
+          <div class="hero__bottle hero__bottle--rage">
+            <img src="images/products/rage/product.png" alt="RAGE Eau de Parfum by HEVON SCENTS"
+              class="hero__bottle-img" loading="eager" />
+          </div>
+          <div class="hero__bottle hero__bottle--sera">
+            <img src="images/products/sera/product.png" alt="SERA Eau de Parfum by HEVON SCENTS"
+              class="hero__bottle-img" loading="eager" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll down indicator -->
+      <div class="hero__scroll" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
+      </div>
+
+    </section>
+    <!-- ================= HERO SECTION END ================= -->
+
+    <!-- Trigger the hero entrance animation immediately after hero HTML -->
+    <script>
+      // Add hero--mounted class to trigger CSS entrance animations
+      document.getElementById("hero-section").classList.add("hero--mounted");
+    </script>
+
+
+    <!-- ================= BRAND STATEMENT START ================= -->
+    <section class="brand-statement section--sm" aria-labelledby="brand-statement-heading">
+      <div class="container">
+
+        <div class="reveal">
+          <p class="eyebrow brand-statement__eyebrow">HEVON SCENTS</p>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <h2 id="brand-statement-heading" class="brand-statement__text serif">
+            Fragrance with presence,<br />
+            <em>designed without excess.</em>
+          </h2>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <p class="brand-statement__body">
+            At HEVON SCENTS, we believe that luxury should be accessible.
+            Every bottle we create is crafted to deliver an exceptional fragrance
+            experience — without the exceptional price tag that usually comes with it.
+            Two signatures. One house. Infinite impressions.
+          </p>
+        </div>
+
+      </div>
+    </section>
+    <!-- ================= BRAND STATEMENT END ================= -->
+
+
+    <!-- ================= FEATURED PRODUCTS START ================= -->
+    <div class="featured-products">
+
+      <!-- RAGE Product Feature — dark theme, image on RIGHT -->
+      <section class="product-feature product-feature--dark" aria-labelledby="feature-rage-heading">
+        <div class="product-feature__layout">
+
+          <!-- Info panel (left side) -->
+          <div class="product-feature__info-panel">
+            <div class="product-feature__info reveal reveal-delay-1">
+              <p class="eyebrow product-feature__eyebrow">Pour Homme</p>
+              <h2 id="feature-rage-heading" class="product-feature__name serif">RAGE</h2>
+              <p class="product-feature__meta">Eau de Parfum &nbsp;·&nbsp; 50 ML</p>
+              <p class="product-feature__tagline">Power. Depth. Presence.</p>
+              <div class="product-feature__price-row">
+                <span class="product-feature__price">Rs. 4,999</span>
+              </div>
+              <a href="product-details.html?product=rage" class="product-feature__cta"
+                aria-label="View RAGE — Eau de Parfum">
+                <span>View RAGE</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Image panel (right side) -->
+          <div class="product-feature__img-panel">
+            <div class="product-feature__img-wrap reveal">
+              <img src="images/products/rage/product.png" alt="RAGE Eau de Parfum 50 ML by HEVON SCENTS"
+                class="product-feature__img" loading="lazy" />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SERA Product Feature — light theme, image on LEFT -->
+      <section class="product-feature product-feature--light" aria-labelledby="feature-sera-heading">
+        <div class="product-feature__layout product-feature__layout--img-left">
+
+          <!-- Image panel (left side) -->
+          <div class="product-feature__img-panel">
+            <div class="product-feature__img-wrap reveal">
+              <img src="images/products/sera/product.png" alt="SERA Eau de Parfum 50 ML by HEVON SCENTS"
+                class="product-feature__img" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Info panel (right side) -->
+          <div class="product-feature__info-panel">
+            <div class="product-feature__info reveal reveal-delay-1">
+              <p class="eyebrow product-feature__eyebrow">Pour Femme</p>
+              <h2 id="feature-sera-heading" class="product-feature__name serif">SERA</h2>
+              <p class="product-feature__meta">Eau de Parfum &nbsp;·&nbsp; 50 ML</p>
+              <p class="product-feature__tagline">Grace. Refinement. Quiet elegance.</p>
+              <div class="product-feature__price-row">
+                <span class="product-feature__price">Rs. 4,999</span>
+              </div>
+              <a href="product-details.html?product=sera" class="product-feature__cta"
+                aria-label="View SERA — Eau de Parfum">
+                <span>View SERA</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+    <!-- ================= FEATURED PRODUCTS END ================= -->
+
+
+    <!-- ================= BRAND FEATURE START ================= -->
+    <section class="brand-feature" aria-labelledby="brand-feature-heading">
+
+      <!-- Full-bleed background image -->
+      <div class="brand-feature__img-panel">
+        <img src="images/brand/hevon_scents_architectural_brand.png" alt="HEVON SCENTS — Luxury, Bottled."
+          class="brand-feature__img" loading="lazy" />
+        <div class="brand-feature__overlay" aria-hidden="true"></div>
+      </div>
+
+      <!-- Text content — bottom left -->
+      <div class="brand-feature__content container">
+        <div class="brand-feature__inner reveal">
+          <p class="eyebrow brand-feature__eyebrow">The House</p>
+          <h2 id="brand-feature-heading" class="brand-feature__heading serif">
+            Luxury comes from<br />
+            restraint,<br />
+            <em>not decoration.</em>
+          </h2>
+          <a href="about.html" class="brand-feature__link">
+            About HEVON SCENTS
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: 0.5rem;">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </section>
+    <!-- ================= BRAND FEATURE END ================= -->
+
+
+    <!-- ================= HOME CTA START ================= -->
+    <section class="home-cta section--dark" aria-labelledby="home-cta-heading">
+      <div class="container home-cta__inner">
+        <div class="home-cta__content">
+          <p class="eyebrow home-cta__eyebrow">The Collection</p>
+          <h2 id="home-cta-heading" class="home-cta__title serif">
+            One brand.<br />
+            <em>Two signatures.</em>
+          </h2>
+          <div class="home-cta__actions">
+            <a href="shop.html" class="btn btn--ghost btn--lg">
+              <span class="btn__inner">Shop the Collection</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================= HOME CTA END ================= -->
+
+  </main>
+  <!-- ================= MAIN PAGE CONTENT END ================= -->
+
+
+  <!-- ================= FOOTER START ================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner container">
+
+      <div class="footer__top">
+
+        <!-- Brand / Logo column -->
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo-link" aria-label="HEVON SCENTS — Home">
+            <img src="images/logo/hevon-logo-white.png.png" alt="HEVON SCENTS" height="96" class="footer__logo-img" />
+          </a>
+          <p class="footer__tagline">Luxury, Bottled.</p>
+        </div>
+
+        <!-- Explore column -->
+        <div class="footer__col">
+          <p class="footer__col-title eyebrow">Explore</p>
+          <nav aria-label="Footer explore navigation">
+            <ul class="footer__list">
+              <li><a href="shop.html" class="footer__link">Shop</a></li>
+              <li><a href="about.html" class="footer__link">About</a></li>
+              <li><a href="contact.html" class="footer__link">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Support column -->
+        <div class="footer__col">
+          <p class="footer__col-title eyebrow">Support</p>
+          <nav aria-label="Footer support navigation">
+            <ul class="footer__list">
+              <li><a href="#faq" class="footer__link">FAQ</a></li>
+              <li><a href="#shipping" class="footer__link">Shipping</a></li>
+              <li><a href="#returns" class="footer__link">Returns</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Social / Follow column -->
+        <div class="footer__col">
+          <p class="footer__col-title eyebrow">Follow</p>
+          <nav aria-label="Social media links">
+            <ul class="footer__list">
+              <li><a href="#instagram" class="footer__link" rel="noopener noreferrer">Instagram</a></li>
+              <li><a href="#facebook" class="footer__link" rel="noopener noreferrer">Facebook</a></li>
+              <li><a href="#tiktok" class="footer__link" rel="noopener noreferrer">TikTok</a></li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+
+      <!-- Footer bottom bar: copyright + legal links -->
+      <div class="footer__bottom">
+        <p class="footer__copy">
+          &copy; <span id="footer-year"></span> HEVON SCENTS. All rights reserved.
+        </p>
+        <p class="footer__legal">
+          <a href="#privacy" class="footer__link">Privacy</a>
+          <a href="#terms" class="footer__link">Terms</a>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+  <!-- ================= FOOTER END ================= -->
+
+
+  <!-- ================= JAVASCRIPT FILES ================= -->
+  <!-- Bootstrap JS (for any Bootstrap components if needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Products data — must load BEFORE cart.js and main.js -->
+  <script src="js/products.js"></script>
+
+  <!-- Cart functionality -->
+  <script src="js/cart.js"></script>
+
+  <!-- Main site-wide JavaScript (navbar, menu, search, scroll reveal) -->
+  <script src="js/main.js"></script>
+
+</body>
+
 </html>

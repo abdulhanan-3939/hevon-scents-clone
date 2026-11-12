@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact HEVON SCENTS — Get in touch with questions about our fragrances." />
+  <title>Contact — HEVON SCENTS</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ================= NAVBAR START ================= -->
+  <header class="navbar navbar--scrolled" id="site-navbar" role="banner">
+    <div class="navbar__inner container">
+      <a href="index.html" class="navbar__logo" aria-label="HEVON SCENTS — Home">
+        <img id="navbar-logo" src="images/logo/hevon-logo-black.png.png" alt="HEVON SCENTS" height="52" class="navbar__logo-img" />
+      </a>
+      <nav class="navbar__nav" aria-label="Primary navigation">
+        <a href="shop.html"    class="navbar__link">Shop</a>
+        <a href="about.html"   class="navbar__link">About</a>
+        <a href="contact.html" class="navbar__link is-active">Contact</a>
+      </nav>
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn js-search-open" aria-label="Search fragrances">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+        <a href="cart.html" class="navbar__icon-btn navbar__cart" aria-label="Shopping bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span class="navbar__cart-count" id="navbar-cart-count" style="display:none;" aria-hidden="true">0</span>
+        </a>
+        <button class="navbar__burger" id="burger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="navbar__burger-bar"></span>
+          <span class="navbar__burger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <!-- ================= NAVBAR END ================= -->
+
+  <!-- ================= MOBILE MENU START ================= -->
+  <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu" aria-hidden="true">
+    <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+      <a href="shop.html"    class="mobile-menu__link">Shop</a>
+      <a href="about.html"   class="mobile-menu__link">About</a>
+      <a href="contact.html" class="mobile-menu__link">Contact</a>
+      <a href="cart.html"    class="mobile-menu__link">
+        Bag <span class="mobile-menu__count" id="mobile-cart-count" style="display:none;">0</span>
+      </a>
+      <button class="mobile-menu__search-btn js-search-open">Search</button>
+    </nav>
+  </div>
+  <div id="menu-backdrop" class="mobile-menu__backdrop" style="display:none;" aria-hidden="true"></div>
+  <!-- ================= MOBILE MENU END ================= -->
+
+  <!-- ================= SEARCH OVERLAY START ================= -->
+  <div id="search-overlay" class="search-overlay" role="dialog" aria-modal="true" aria-label="Search fragrances">
+    <div id="search-backdrop" class="search-overlay__backdrop" aria-hidden="true"></div>
+    <div class="search-overlay__panel">
+      <div class="search-overlay__header">
+        <div class="search-overlay__input-wrap">
+          <label for="search-input" class="sr-only">Search fragrances</label>
+          <input id="search-input" type="search" class="search-overlay__input" placeholder="Search fragrances…" autocomplete="off" />
+        </div>
+        <button class="search-overlay__close js-search-close" aria-label="Close search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div class="search-overlay__body">
+        <p class="search-overlay__hint eyebrow" id="search-hint">Start typing to search</p>
+        <ul class="search-results" id="search-results" role="list"></ul>
+      </div>
+    </div>
+  </div>
+  <!-- ================= SEARCH OVERLAY END ================= -->
+
+
+  <!-- ================= CONTACT PAGE CONTENT START ================= -->
+  <main class="page-main contact-page">
+    <div class="container">
+
+      <!-- ================= CONTACT HEADER START ================= -->
+      <div class="contact-header">
+        <div class="reveal">
+          <p class="eyebrow">Contact</p>
+          <h1 class="contact-header__title serif">Get in touch</h1>
+          <p class="contact-header__sub">
+            Have a question about a fragrance, or want to know more about HEVON SCENTS?
+          </p>
+        </div>
+      </div>
+      <!-- ================= CONTACT HEADER END ================= -->
+
+
+      <!-- ================= CONTACT LAYOUT START ================= -->
+      <!-- Two columns: contact info left, form right -->
+      <div class="contact-layout">
+
+        <!-- ================= CONTACT INFO START ================= -->
+        <div class="contact-info reveal">
+          <ul class="contact-info__list">
+
+            <li class="contact-info__item">
+              <span class="eyebrow contact-info__label">Email</span>
+              <a href="mailto:hello@hevonscents.com" class="contact-info__link">
+                hello@hevonscents.com
+              </a>
+            </li>
+
+            <li class="contact-info__item">
+              <span class="eyebrow contact-info__label">Instagram</span>
+              <a href="#instagram" class="contact-info__link" rel="noopener noreferrer">
+                @hevonscents
+              </a>
+            </li>
+
+            <li class="contact-info__item">
+              <span class="eyebrow contact-info__label">Response time</span>
+              <p class="contact-info__text">Within 24–48 hours</p>
+            </li>
+
+          </ul>
+        </div>
+        <!-- ================= CONTACT INFO END ================= -->
+
+
+        <!-- ================= CONTACT FORM START ================= -->
+        <div class="contact-form-wrap">
+
+          <!-- Success message — hidden until form is submitted -->
+          <div class="contact-success" id="contact-success" role="alert" style="display:none;">
+            <div class="contact-success__icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <h2 class="contact-success__title serif">Message received.</h2>
+            <p class="contact-success__sub">We'll be in touch shortly.</p>
+            <button class="contact-success__reset" id="contact-reset-btn">
+              Send another message
+            </button>
+          </div>
+
+          <!-- Contact form — shown by default -->
+          <form class="contact-form" id="contact-form" novalidate aria-label="Contact form">
+
+            <!-- Name and Email fields in a row -->
+            <div class="form-row">
+
+              <div class="form-group">
+                <label for="contact-name" class="form-label eyebrow">Name</label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  name="name"
+                  class="form-input"
+                  autocomplete="name"
+                  aria-required="true"
+                />
+                <!-- Error message shown by JavaScript validation -->
+                <p class="form-error" id="name-error" role="alert" style="display:none;"></p>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label eyebrow">Email</label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  name="email"
+                  class="form-input"
+                  autocomplete="email"
+                  aria-required="true"
+                />
+                <p class="form-error" id="email-error" role="alert" style="display:none;"></p>
+              </div>
+
+            </div>
+
+            <!-- Subject field -->
+            <div class="form-group">
+              <label for="contact-subject" class="form-label eyebrow">Subject</label>
+              <input
+                id="contact-subject"
+                type="text"
+                name="subject"
+                class="form-input"
+                placeholder="e.g. Question about RAGE"
+              />
+            </div>
+
+            <!-- Message textarea -->
+            <div class="form-group">
+              <label for="contact-message" class="form-label eyebrow">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                class="form-input form-textarea"
+                rows="7"
+                aria-required="true"
+              ></textarea>
+              <p class="form-error" id="message-error" role="alert" style="display:none;"></p>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn--primary btn--lg contact-form__submit">
+              <span class="btn__inner">Send Message</span>
+            </button>
+
+          </form>
+
+        </div>
+        <!-- ================= CONTACT FORM END ================= -->
+
+      </div>
+      <!-- ================= CONTACT LAYOUT END ================= -->
+
+    </div>
+  </main>
+  <!-- ================= CONTACT PAGE CONTENT END ================= -->
+
+
+  <!-- ================= FOOTER START ================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo-link" aria-label="HEVON SCENTS — Home">
+            <img src="images/logo/hevon-logo-white.png.png" alt="HEVON SCENTS" height="96" class="footer__logo-img" />
+          </a>
+          <p class="footer__tagline">Luxury, Bottled.</p>
+        </div>
+        <div class="footer__col">
+          <p class="footer__col-title eyebrow">Explore</p>
+          <nav aria-label="Footer explore navigation">
+            <ul class="footer__list">
+              <li><a href="shop.html"    class="footer__link">Shop</a></li>
+              <li><a href="about.html"   class="footer__link">About</a></li>
+              <li><a href="contact.html" class="footer__link">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <p class="footer__col-title eyebrow">Support</p>
+          <nav aria-label="Footer support navigation">
+            <ul class="footer__list">
+              <li><a href="#faq"      class="footer__link">FAQ</a></li>
+              <li><a href="#shipping" class="footer__link">Shipping</a></li>
+              <li><a href="#returns"  class="footer__link">Returns</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer__col">
+          <p class="footer__col-title eyebrow">Follow</p>
+          <nav aria-label="Social media links">
+            <ul class="footer__list">
+              <li><a href="#instagram" class="footer__link" rel="noopener noreferrer">Instagram</a></li>
+              <li><a href="#facebook"  class="footer__link" rel="noopener noreferrer">Facebook</a></li>
+              <li><a href="#tiktok"    class="footer__link" rel="noopener noreferrer">TikTok</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; <span id="footer-year"></span> HEVON SCENTS. All rights reserved.</p>
+        <p class="footer__legal">
+          <a href="#privacy" class="footer__link">Privacy</a>
+          <a href="#terms"   class="footer__link">Terms</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- ================= FOOTER END ================= -->
+
+
+  <!-- ================= JAVASCRIPT FILES ================= -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- ================= CONTACT FORM VALIDATION SCRIPT ================= -->
+  <script>
+    // Contact form validation and submission handling
+    document.addEventListener("DOMContentLoaded", function () {
+
+      var form        = document.getElementById("contact-form");
+      var successBox  = document.getElementById("contact-success");
+      var resetBtn    = document.getElementById("contact-reset-btn");
+
+      // Input fields
+      var nameInput    = document.getElementById("contact-name");
+      var emailInput   = document.getElementById("contact-email");
+      var messageInput = document.getElementById("contact-message");
+
+      // Error message elements
+      var nameError    = document.getElementById("name-error");
+      var emailError   = document.getElementById("email-error");
+      var messageError = document.getElementById("message-error");
+
+      // Function to show an error message under a field
+      function showError(input, errorEl, message) {
+        input.classList.add("form-input--error");
+        input.setAttribute("aria-invalid", "true");
+        errorEl.textContent = message;
+        errorEl.style.display = "block";
+      }
+
+      // Function to clear an error message
+      function clearError(input, errorEl) {
+        input.classList.remove("form-input--error");
+        input.setAttribute("aria-invalid", "false");
+        errorEl.textContent = "";
+        errorEl.style.display = "none";
+      }
+
+      // Clear errors when user starts typing in a field
+      nameInput.addEventListener("input",    function () { clearError(nameInput,    nameError); });
+      emailInput.addEventListener("input",   function () { clearError(emailInput,   emailError); });
+      messageInput.addEventListener("input", function () { clearError(messageInput, messageError); });
+
+      // Handle form submission
+      form.addEventListener("submit", function (e) {
+        // Prevent default browser form submission
+        e.preventDefault();
+
+        var isValid = true;
+
+        // Validate name field
+        if (!nameInput.value.trim()) {
+          showError(nameInput, nameError, "Please enter your name.");
+          isValid = false;
+        } else {
+          clearError(nameInput, nameError);
+        }
+
+        // Validate email field
+        if (!emailInput.value.trim()) {
+          showError(emailInput, emailError, "Please enter your email.");
+          isValid = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+          // Check if the email format looks valid using a simple pattern
+          showError(emailInput, emailError, "Please enter a valid email address.");
+          isValid = false;
+        } else {
+          clearError(emailInput, emailError);
+        }
+
+        // Validate message field
+        if (!messageInput.value.trim()) {
+          showError(messageInput, messageError, "Please enter your message.");
+          isValid = false;
+        } else {
+          clearError(messageInput, messageError);
+        }
+
+        // If all fields are valid, show success message
+        if (isValid) {
+          // Hide the form and show success message
+          form.style.display = "none";
+          successBox.style.display = "block";
+
+          // Clear all form fields
+          nameInput.value    = "";
+          emailInput.value   = "";
+          messageInput.value = "";
+          document.getElementById("contact-subject").value = "";
+        }
+      });
+
+      // Handle "Send another message" button — reset the form
+      if (resetBtn) {
+        resetBtn.addEventListener("click", function () {
+          successBox.style.display = "none";
+          form.style.display       = "block";
+        });
+      }
+
+    });
+  </script>
+
+</body>
+</html>
+

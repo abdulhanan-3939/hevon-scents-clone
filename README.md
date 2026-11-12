@@ -1,142 +1,168 @@
-<div align="center">
+# HEVON SCENTS — HTML/CSS/JS Website
 
-# HEVON SCENTS
-
-### _Luxury Fragrance. Refined Digital Experience._
-
-<br/>
-
-## 🌐 [hevonscents.vercel.app](https://hevonscents.vercel.app)
-
-> **Live site — click to experience it**
-
-<br/>
-
-![Hevon Scents](https://img.shields.io/badge/Status-Live-brightgreen?style=for-the-badge)
-![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)
-
-</div>
+A luxury perfume e-commerce website converted from React/Vite to plain HTML5, CSS3, Bootstrap 5, and Vanilla JavaScript.
 
 ---
 
-## ✦ About
+## How to Run
 
-**HEVON SCENTS** is a premium luxury fragrance brand from Pakistan. This is the official digital storefront — built with an editorial, high-fashion aesthetic that mirrors the identity of the brand.
+1. Open the `d:\hevon-scents\` folder in **VS Code**
+2. Right-click `index.html` and select **"Open with Live Server"**
+3. The website will open at `http://127.0.0.1:5500/`
 
-The site features two debut fragrances:
-
-| | SERA | RAGE |
-|---|---|---|
-| **Gender** | Pour Femme | Pour Homme |
-| **Type** | Eau de Parfum | Eau de Parfum |
-| **Size** | 50 ML | 50 ML |
-| **Price** | Rs. 4,999 | Rs. 4,999 |
-| **Profile** | Fresh · Floral · Vanilla-Wood | Bold · Citrus · Dark Woody Musk |
+> Make sure the **Live Server** extension is installed in VS Code.
 
 ---
 
-## ✦ Features
-
-- 🖤 **Editorial dark-mode design** — magazine-level aesthetic inspired by luxury fragrance houses
-- 🌸 **Full fragrance profiles** — olfactive description, top / heart / base notes for every scent
-- 🛒 **Shopping cart** — add to bag, quantity control, persistent cart state via React Context
-- 🔍 **Live search overlay** — search across product names, notes, and fragrance family
-- 📱 **Fully responsive** — desktop, tablet, and mobile optimised
-- ⚡ **Page transitions** — smooth animated routing between pages
-- 🖼️ **Lifestyle editorial strips** — full-bleed imagery with sticky product gallery
-- ✨ **Micro-animations** — scroll reveal, hover effects, and subtle motion throughout
-
----
-
-## ✦ Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Framework | [React 18](https://react.dev) |
-| Build Tool | [Vite 5](https://vitejs.dev) |
-| Routing | [React Router v6](https://reactrouter.com) |
-| Styling | Vanilla CSS with custom design tokens |
-| State | React Context API |
-| Deployment | [Vercel](https://vercel.com) |
-
----
-
-## ✦ Project Structure
+## Project Structure
 
 ```
 hevon-scents/
-├── public/
-│   └── images/
-│       ├── products/       # Product photography (RAGE, SERA)
-│       ├── lifestyle/      # Editorial lifestyle imagery
-│       └── brand/          # Brand campaign assets
-├── src/
-│   ├── components/
-│   │   ├── common/         # Button, Loading, ScrollReveal, Logo
-│   │   ├── home/           # Hero, FeaturedProducts, BrandFeature, SearchOverlay
-│   │   ├── layout/         # Navbar, Footer, PageTransition
-│   │   └── products/       # ProductCard, ProductGallery, ProductInfo, FragranceNotes
-│   ├── context/
-│   │   └── CartContext.jsx # Global cart state
-│   ├── data/
-│   │   └── products.js     # Single source of truth for all product data
-│   ├── pages/              # Home, Shop, ProductDetails, About, Contact, Cart
-│   └── styles/             # Global CSS, design tokens, animations
-├── index.html
-├── vite.config.js
-└── package.json
+│
+├── index.html              ← Home page
+├── shop.html               ← Shop / product listing page
+├── about.html              ← About page
+├── contact.html            ← Contact form page
+├── cart.html               ← Shopping cart page
+├── product-details.html    ← Product detail page (uses ?product=rage or ?product=sera)
+├── 404.html                ← Page not found
+│
+├── css/
+│   ├── variables.css       ← CSS custom properties (colors, fonts, spacing)
+│   ├── animations.css      ← Keyframe animations and reveal utilities
+│   └── style.css           ← Master stylesheet (all component styles)
+│
+├── js/
+│   ├── products.js         ← Product data (RAGE + SERA) and helper functions
+│   ├── cart.js             ← Cart logic: add, remove, update, localStorage
+│   ├── main.js             ← Site-wide JS: navbar, mobile menu, search, scroll reveal
+│   ├── product-details.js  ← Builds the product details page dynamically
+│   └── cart-page.js        ← Renders the cart page from localStorage
+│
+├── images/
+│   ├── products/           ← Product bottle photos
+│   ├── lifestyle/          ← Lifestyle editorial images
+│   ├── brand/              ← Brand campaign images
+│   └── logo/               ← HEVON SCENTS logo files
+│
+└── src/                    ← Original React project (DO NOT DELETE)
 ```
 
 ---
 
-## ✦ Getting Started
+## Page URLs
 
-```bash
-# Clone the repository
-git clone https://github.com/abdulhanan-3939/Hevon-Scents.git
-cd Hevon-Scents
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-```
-
-Then open **http://localhost:5173** in your browser.
+| Page            | URL                                          |
+|-----------------|----------------------------------------------|
+| Home            | `index.html`                                 |
+| Shop            | `shop.html`                                  |
+| About           | `about.html`                                 |
+| Contact         | `contact.html`                               |
+| Cart            | `cart.html`                                  |
+| RAGE details    | `product-details.html?product=rage`          |
+| SERA details    | `product-details.html?product=sera`          |
+| 404             | `404.html`                                   |
 
 ---
 
-## ✦ The Fragrances
+## Technology Stack
 
-### SERA — Pour Femme
-> *A fresh, feminine fragrance blending juicy pear and delicate florals with a warm, sensual vanilla-wood finish.*
-
-| Layer | Notes |
-|---|---|
-| **Top** | Pear · Pink Pepper · Orange Blossom |
-| **Heart** | Coffee · Jasmine · Bitter Almond · Licorice |
-| **Base** | Vanilla · Patchouli · Cashmere Wood · Cedar |
-
----
-
-### RAGE — Pour Homme
-> *A bold masculine fragrance opening with citrus and crisp fruits, evolving into a dark, woody and musky finish.*
-
-| Layer | Notes |
-|---|---|
-| **Top** | Lemon · Pink Pepper · Apple · Bergamot · Black Currant |
-| **Heart** | Pineapple · Patchouli · Moroccan Jasmine |
-| **Base** | Birch · Musk · Oakmoss · Cedarwood · Ambroxan |
+| Technology     | Purpose                                      |
+|----------------|----------------------------------------------|
+| HTML5          | Page structure and content                   |
+| CSS3           | Custom styling (original design preserved)   |
+| Bootstrap 5    | Responsive grid and layout utilities only    |
+| Vanilla JS     | Interactivity, cart, search, animations      |
+| localStorage   | Cart data persistence across page refreshes  |
 
 ---
 
-<div align="center">
+## JavaScript Features
 
-**© 2026 HEVON SCENTS. All rights reserved.**
+### `js/products.js`
+- `getProducts()` — returns all products
+- `getProductBySlug(slug)` — finds product by id/slug
+- `getFeaturedProducts()` — returns available products
+- `formatPrice(product)` — returns "Rs. 4,999"
+- `searchProducts(query)` — filters products by keyword
 
-[Visit the Live Site →](https://hevonscents.vercel.app)
+### `js/cart.js`
+- `addToCart(productId, quantity)` — adds to cart, saves to localStorage
+- `removeFromCart(productId)` — removes item, saves to localStorage
+- `updateCartQuantity(productId, quantity)` — updates qty, saves
+- `clearCart()` — empties the cart
+- `getCartItemCount()` — total quantity of all items
+- `getCartSubtotal()` — total price
+- `updateCartBadge()` — updates cart count in navbar
 
-</div>
+### `js/main.js`
+- Navbar scroll behavior (white → black at 60px scroll)
+- Mobile menu open/close with burger button
+- Search overlay open/close with live results
+- Scroll reveal animations (IntersectionObserver)
+- Footer year auto-update
+
+### `js/product-details.js`
+- Reads `?product=` from URL
+- Builds entire product page via innerHTML
+- Gallery image switching (thumbnail clicks)
+- Quantity selector (+/- buttons)
+- Add to cart with feedback
+
+### `js/cart-page.js`
+- Renders cart items from localStorage
+- Quantity increment/decrement
+- Remove item
+- Order summary calculation
+
+---
+
+## Cart Data
+
+Cart data is saved in browser localStorage under the key: `hevon_cart`
+
+Format: `[{ id, slug, name, type, genderLabel, size, price, image, quantity }]`
+
+The cart persists when the browser is refreshed. It clears only when the user's browser storage is cleared.
+
+---
+
+## Products
+
+| Product | Gender     | Price    | Theme |
+|---------|------------|----------|-------|
+| RAGE    | Pour Homme | Rs. 4,999 | Dark  |
+| SERA    | Pour Femme | Rs. 4,999 | Light |
+
+---
+
+## Important Notes
+
+- The original React project is in `src/` — **do not delete it**
+- All image paths are relative (no leading `/`)
+- Logo files have double extension: `hevon-logo-white.png.png` (this is intentional)
+- Bootstrap is used **only** for grid/utilities — custom CSS always takes priority
+- JavaScript uses `var` and named functions for university viva clarity
+
+---
+
+## Common Modifications
+
+**Change product price:**  
+Edit `js/products.js` → find `price: 4999` → change value
+
+**Change navbar color:**  
+Edit `css/variables.css` → `--black`, `--white` variables
+
+**Change hero text:**  
+Edit `index.html` → find `hero__headline` section
+
+**Add a product:**  
+Edit `js/products.js` → add new object to the `products` array
+
+**Change contact email:**  
+Edit `contact.html` → find `hello@hevonscents.com`
+
+---
+
+*HEVON SCENTS — Luxury, Bottled.*
